@@ -6,4 +6,4 @@ const appScheme = mongoose.Schema({
     timestamp: String
 });
 
-export default mongoose.model('messagecontent', appScheme);
+export default mongoose.model('messagecontents', appScheme);

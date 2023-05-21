@@ -37,14 +37,14 @@ mongoose.connect(connection_url, {
 
 const db = mongoose.connection
 
-db.once('once', ()=> {
+db.once('open', ()=> {
     console.log("db connected");
 
-    const msgCollection = db.collection('messagecontent');
+    const msgCollection = db.collection('messagecontents');// this funct takes collects make sure it matches with mongodb colection 
     const changeStream = msgCollection.watch();
 
-    changeStream.on('change', (change)=>{
-        console.log("changestream");
+    changeStream.on("change", (change)=>{
+        console.log(change);
     });
 });
 
