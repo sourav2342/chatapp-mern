@@ -25,6 +25,13 @@ const pusher = new Pusher({
 // middleware
 app.use(express.json());
 
+// use cors mode instead
+//app.use(cors());
+app.use((req, res, next) =>{
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    next();
+});
 
 
 // DB config
@@ -44,9 +51,24 @@ db.once('open', ()=> {
     const changeStream = msgCollection.watch();
 
     changeStream.on("change", (change)=>{
+        
         console.log(change);
+
+        if(change.operationType == "insert"){
+            const messageDetails = change.fullDocument;
+            pusher.trigger("messages","inserted", {
+                name:messageDetails.name,
+                message: messageDetails.message,
+                timestamp: messageDetails.timestamp,
+                receiver: messageDetails.receiver,
+            });
+        } else{
+            console.log("Error triggering pusher");
+        }
     });
+
 });
+
 
 //api routes
 app.get("/", (req, res)=> res.status(200).send("hello world"));
