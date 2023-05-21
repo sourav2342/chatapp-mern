@@ -12,7 +12,7 @@ import {BsThreeDotsVertical} from "react-icons/bs";
 
 import {BiSearchAlt2} from "react-icons/bi";
 
-import {AiOutlineSend} from "react-icons/ai";
+import {BsMic} from "react-icons/bs";
 
 
 function Chat(){
@@ -33,12 +33,35 @@ function Chat(){
                 </div>
 
             </div>
-            <ChatComponent />
+            <div className="chat_body">
+                <p className="chat_msg">
+                <span className="chat_name">jarvis</span>
+                    this is a mssg
+                <span className="chat_time">{new Date().toUTCString()}</span>
+                </p>
+
+                <p className="chat_msg recieved_msg">
+                <span className="chat_name">jarvis</span>
+                    this is a mssg
+                <span className="chat_time">{new Date().toUTCString()}</span>
+                </p>
+
+                <p className="chat_msg recieved_msg">
+                <span className="chat_name">jarvis</span>
+                    this is a mssg
+                <span className="chat_time">{new Date().toUTCString()}</span>
+                </p>
+            </div>
+
+           
+                
+            
 
              <div className="chat_footer">
                 <form>
                 <input className="type_text" type='text' placeholder='Type message'/>
-                <AiOutlineSend  className="send_button"/>
+                <button type="submit"> Send a message</button>
+                <BsMic className="mic"/>
                 </form>
              </div>
         </div>

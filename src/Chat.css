@@ -54,6 +54,11 @@
     margin-bottom: 30px ;
 }
 
+.recieved_msg{
+    margin-left: auto;
+    background-color: #dcf8c6;
+}
+
 .chat_time{
     margin-left: 10px;
     font-size: xx-small;
@@ -74,8 +79,24 @@
 }
 
 .chat_footer > form {
-    width: 100%;
+    display: flex;
+
+    flex:1;
+    align-items: center;
 }
+
+.chat_footer > form > button{
+    display: none;
+}
+
+.mic{
+   margin-left: 10px;  
+}
+
+.mic:hover{
+    color: #a7a4a4;
+}
+
 .type_text{
     
     width: 85%;
@@ -83,14 +104,11 @@
     padding: 10px;
     border: none;
 }
-.send_button {
+.submit {
    
-    margin-left: 15px;
+    padding: 10px;
+    color: gray;
 }
 
-.send_button:hover{
-    border-radius: 50%;
-    background-color: #a7a4a4;
-}
 
 
