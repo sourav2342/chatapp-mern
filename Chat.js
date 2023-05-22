@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 //es7 react snippet generator download ES7React/Redux/Graph
 import "./Chat.css";
 
@@ -13,11 +13,30 @@ import {BiSearchAlt2} from "react-icons/bi";
 
 import {BsMic} from "react-icons/bs";
 
+import axios from "axios";
 
 
 
 function Chat({ messages }){
 
+    const [input, setInput] = useState('');
+
+    const sendMessage =(e) =>{
+        
+        e.preventDefault();
+
+        axios.post('http://localhost:9000/messages/new', {
+            message:input,
+            name:"sonu",
+            timestamp:"ima a demo.."
+        });
+
+        setInput('');
+    }
+
+    function handleChange(e){
+         setInput(e.target.value)
+    }
     return (
         <div className='chat'>
             <div className="chat_header">
@@ -48,8 +67,13 @@ function Chat({ messages }){
 
              <div className="chat_footer">
                 <form>
-                <input className="type_text" type='text' placeholder='Type message'/>
-                <button type="submit"> Send a message</button>
+                <input 
+                value={input} 
+                onChange = {handleChange}
+                className="type_text" type='text' 
+                placeholder='Type message'/>
+
+                <button onClick={sendMessage} type="submit"> Send a message</button>
                 <BsMic className="mic"/>
                 </form>
              </div>
