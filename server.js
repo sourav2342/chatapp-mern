@@ -43,7 +43,6 @@ mongoose.connect(connection_url, {
 
 
 const db = mongoose.connection
-
 db.once('open', ()=> {
     console.log("db connected");
 
