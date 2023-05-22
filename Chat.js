@@ -5,7 +5,6 @@ import "./Chat.css";
 import ChatComponent from "./ChatComponent";
 
 import { RxAvatar } from "react-icons/rx";
-
 import {IoMdAttach} from "react-icons/io";
 
 import {BsThreeDotsVertical} from "react-icons/bs";
@@ -13,6 +12,8 @@ import {BsThreeDotsVertical} from "react-icons/bs";
 import {BiSearchAlt2} from "react-icons/bi";
 
 import {BsMic} from "react-icons/bs";
+
+
 
 
 function Chat({ messages }){
@@ -34,18 +35,15 @@ function Chat({ messages }){
 
             </div>
             <div className="chat_body">
-
-                {messages.map( (message) => (
-                    <p className={"chat_msg " +message.received}>
+                {messages ?.map((message) => (
+                    <p className="chat_msg">
                     <span className="chat_name">{message.name}</span>
                         {message.message}
                     <span className="chat_time">{message.timestamp}</span>
                     </p>
                 ))}
-            </div>
-
-           
                 
+            </div>
             
 
              <div className="chat_footer">
